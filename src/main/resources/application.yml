@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/epamcourses?currentSchema=liadov
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  liquibase:
+    change-log: classpath:/db/database_liadov_changelog.xml

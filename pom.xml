@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.4.2</version>
+        <relativePath/>
+    </parent>
+    <groupId>com.epam</groupId>
+    <artifactId>spring.start</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>spring.start</name>
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <java.version>17</java.version>
+        <lombok.version>1.18.36</lombok.version>
+
+        <liquibase.user>usr</liquibase.user>
+        <liquibase.password>pass</liquibase.password>
+        <liquibase.changeLogFile>src/main/resources/db/database_liadov_changelog.xml</liquibase.changeLogFile>
+        <liquibase.host>localhost</liquibase.host>
+        <liquibase.port>5432</liquibase.port>
+        <liquibase.db>epamcourses</liquibase.db>
+        <liquibase.schema>liadov</liquibase.schema>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <configuration>
+                    <outputFileEncoding>UTF-8</outputFileEncoding>
+                    <driver>org.postgresql.Driver</driver>
+                    <url>
+                        jdbc:postgresql://${liquibase.host}:${liquibase.port}/${liquibase.db}?currentSchema=${liquibase.schema}
+                    </url>
+                    <username>${liquibase.user}</username>
+                    <password>${liquibase.password}</password>
+                    <changeLogFile>${liquibase.changeLogFile}</changeLogFile>
+                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

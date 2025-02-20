@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet author="Aleksandr Liadov" id="customer_changelog-1.0">
+        <createTable tableName="Customer">
+            <column name="CustomerId" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="CustomerName" type="varchar(50)">
+                <constraints nullable="false" primaryKey="false" unique="true"/>
+            </column>
+            <column name="Phone" type="varchar(20)">
+                <constraints nullable="true" primaryKey="false" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Aleksandr Liadov" id="order_changelog-1.0">
+        <createTable tableName="order">
+            <column name="OrderId" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="OrderNumber" type="varchar(10)">
+                <constraints nullable="true" primaryKey="false" unique="true"/>
+            </column>
+            <column name="CustomerId" type="int">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="OrderDate" type="timestamp">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="TotalAmount" type="decimal(12,2)">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="order"
+                                 baseColumnNames="CustomerId"
+                                 constraintName="fk_Order_Customer"
+                                 referencedTableName="Customer"
+                                 referencedColumnNames="CustomerId"
+                                 onUpdate="CASCADE"
+                                 onDelete="CASCADE"/>
+    </changeSet>
+
+    <changeSet author="Aleksandr Liadov" id="supplier_changelog-1.0">
+        <createTable tableName="Supplier">
+            <column name="SupplierId" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="CompanyName" type="varchar(40)">
+                <constraints nullable="false" primaryKey="false" unique="true"/>
+            </column>
+            <column name="Phone" type="varchar(20)">
+                <constraints nullable="true" primaryKey="false" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Aleksandr Liadov" id="product_changelog-1.0">
+        <createTable tableName="Product">
+            <column name="ProductId" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="ProductName" type="varchar(50)">
+                <constraints nullable="false" primaryKey="false" unique="true"/>
+            </column>
+            <column name="SupplierId" type="int">
+                <constraints nullable="false" primaryKey="false" unique="true"/>
+            </column>
+            <column name="UnitPrice" type="decimal(12,2)">
+                <constraints nullable="true" primaryKey="false" unique="false"/>
+            </column>
+            <column name="IsDiscontinued" type="boolean">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="Product"
+                                 baseColumnNames="SupplierId"
+                                 constraintName="fk_Product_Supplier"
+                                 referencedTableName="Supplier"
+                                 referencedColumnNames="SupplierId"
+                                 onUpdate="CASCADE"
+                                 onDelete="CASCADE"/>
+    </changeSet>
+
+    <changeSet author="Aleksandr Liadov" id="order_product_changelog-1.0">
+        <createTable tableName="OrderProduct">
+            <column name="OrderId" type="int">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="ProductId" type="int">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="OrderProduct"
+                                 baseColumnNames="OrderId"
+                                 constraintName="fk_OrderProduct_Order"
+                                 referencedTableName="order"
+                                 referencedColumnNames="OrderId"
+                                 onUpdate="CASCADE"
+                                 onDelete="CASCADE"/>
+        <addForeignKeyConstraint baseTableName="OrderProduct"
+                                 baseColumnNames="ProductId"
+                                 constraintName="fk_OrderProduct_Product"
+                                 referencedTableName="Product"
+                                 referencedColumnNames="ProductId"
+                                 onUpdate="CASCADE"
+                                 onDelete="CASCADE"/>
+    </changeSet>
+
+</databaseChangeLog>
