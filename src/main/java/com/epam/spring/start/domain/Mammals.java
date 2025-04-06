@@ -11,9 +11,8 @@ public abstract class Mammals {
 
     protected abstract void drinkMilk();
 
-    protected abstract void selfHeating();
-
     protected void hide() {
         System.out.println("Mammal is Hiding");
     }
+
 }

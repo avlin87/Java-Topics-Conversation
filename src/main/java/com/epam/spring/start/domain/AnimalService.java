@@ -10,10 +10,11 @@ import java.util.List;
 @Slf4j
 public class AnimalService {
 
-    public static void main(String[] args) {
-        AnimalService service = new AnimalService();
+    private static final Cat cat = new Cat();
 
-        Cat cat = new Cat();
+    public static void main(String[] args) {
+
+        AnimalService service = new AnimalService();
         cat.setAge(4);
         
         Mammals kitten = new Kitten();

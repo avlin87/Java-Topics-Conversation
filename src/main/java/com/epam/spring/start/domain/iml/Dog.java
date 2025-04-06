@@ -11,10 +11,10 @@ public class Dog implements Animal {
         log.info("Dog run");
     }
 
-    @Override
-    public void sleep() {
-        log.info("Dog sleep");
-    }
+//    @Override
+//    public void sleep() {
+//        log.info("Dog sleep");
+//    }
 
     @Override
     public void eat() {

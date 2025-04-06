@@ -7,15 +7,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Cat extends Mammals implements Animal {
 
-
     @Override
     public void run() {
         log.info("Cat is running");
-    }
-
-    @Override
-    public void sleep() {
-        log.info("Cat is sleeping");
     }
 
     @Override
@@ -38,12 +32,7 @@ public class Cat extends Mammals implements Animal {
     }
 
     @Override
-    public void selfHeating() {
-
-    }
-
-    @Override
-    public void hide(){
+    public void hide() {
         log.info("Cat is hiding");
     }
 }
