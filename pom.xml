@@ -21,10 +21,10 @@
         <liquibase.user>usr</liquibase.user>
         <liquibase.password>pass</liquibase.password>
         <liquibase.changeLogFile>src/main/resources/db/database_liadov_changelog.xml</liquibase.changeLogFile>
-        <liquibase.host>localhost</liquibase.host>
+        <liquibase.host>my-postgres</liquibase.host>
         <liquibase.port>5432</liquibase.port>
         <liquibase.db>epamcourses</liquibase.db>
-        <liquibase.schema>liadov</liquibase.schema>
+        <liquibase.schema>public</liquibase.schema>
     </properties>
 
     <dependencies>

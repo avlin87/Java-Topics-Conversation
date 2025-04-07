@@ -7,41 +7,14 @@
         objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
 
     <changeSet author="Aleksandr Liadov" id="product_changelog-1.1">
-        <dropUniqueConstraint tableName="Product"
-                              uniqueColumns="SupplierId"
-                              schemaName="liadov"
-                              constraintName="product_supplierid_key"/>
-    </changeSet>
-
-    <changeSet author="Aleksandr Liadov" id="order_product_changelog-1.1">
-        <dropUniqueConstraint tableName="OrderProduct"
-                              uniqueColumns="OrderId"
-                              schemaName="liadov"
-                              constraintName="orderproduct_orderid_key"/>
-        <dropUniqueConstraint tableName="OrderProduct"
-                              uniqueColumns="ProductId"
-                              schemaName="liadov"
-                              constraintName="orderproduct_productid_key"/>
-        <dropForeignKeyConstraint
-                baseTableName="OrderProduct"
-                baseTableSchemaName="liadov"
-                constraintName="fk_OrderProduct_Order"/>
-        <dropForeignKeyConstraint
-                baseTableName="OrderProduct"
-                baseTableSchemaName="liadov"
-                constraintName="fk_OrderProduct_Product"/>
-
-        <addForeignKeyConstraint baseTableName="OrderProduct"
-                                 baseColumnNames="OrderId"
-                                 constraintName="fk_OrderProduct_Order"
-                                 referencedTableName="order"
-                                 referencedColumnNames="OrderId"
-                                 onDelete="CASCADE"/>
-        <addForeignKeyConstraint baseTableName="OrderProduct"
-                                 baseColumnNames="ProductId"
-                                 constraintName="fk_OrderProduct_Product"
-                                 referencedTableName="Product"
-                                 referencedColumnNames="ProductId"/>
+        <createTable tableName="Account">
+            <column name="AccountId" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="AccountName" type="varchar(50)">
+                <constraints nullable="false" primaryKey="false" unique="true"/>
+            </column>
+        </createTable>
     </changeSet>
 
 </databaseChangeLog>
