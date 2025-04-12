@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class MyExceptionHandler {
 
     @ExceptionHandler(EntityNotFound.class)
-    @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Account not present in database")
+    @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Entity not present in database")
     public String handleException(EntityNotFound e) {
         return getString(e);
     }
@@ -31,16 +31,16 @@ public class MyExceptionHandler {
     }
 
     @ExceptionHandler
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String handleException(RuntimeException e) {
+        return getString(e);
+    }
+
+    @ExceptionHandler
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String handleException(Exception e) {
         log.error("handleException() - HttpStatus.INTERNAL_SERVER_ERROR \n{}", e.getMessage());
         return e.getMessage();
-    }
-
-    @ExceptionHandler
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String handleException(RuntimeException e) {
-        return getString(e);
     }
 
     private String getString(RuntimeException e) {

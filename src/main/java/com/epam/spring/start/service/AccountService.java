@@ -11,6 +11,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AccountService {
+
     private final AccountRepository accountRepository;
 
     public Account save(Account account) {
