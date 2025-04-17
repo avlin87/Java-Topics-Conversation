@@ -29,14 +29,14 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public Customer helloCustomer(@PathVariable Integer id) {
-        log.info("hello customer");
+    public Customer getCustomer(@PathVariable Integer id) {
+        log.info("get customer");
         return customerService.getCustomer(id);
     }
 
     @GetMapping()
-    public List<Customer> helloCustomer() {
-        log.info("hello customerS!");
+    public List<Customer> getCustomer() {
+        log.info("get customerS!");
         return customerService.getAllCustomers();
     }
 
