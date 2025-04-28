@@ -1,5 +1,7 @@
 package com.epam.patterns.creational;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * Examples include:
  * <p>
@@ -9,6 +11,7 @@ package com.epam.patterns.creational;
  * Database Connections: One instance managing access to the database.
  * Thread Pools: Managing a single shared thread pool for an application.
  */
+@Slf4j
 public class Singleton {
     // Static instance of the class
     private static Singleton instance;
@@ -29,7 +32,7 @@ public class Singleton {
         public static void main(String[] args) {
             Singleton s1 = Singleton.getInstance();
             Singleton s2 = Singleton.getInstance();
-            System.out.println(s1 == s2);
+            log.info(String.valueOf(s1 == s2));
         }
     }
 }

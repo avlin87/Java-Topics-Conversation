@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Create new objects by cloning an existing object, rather than instantiating a class.
  */
+@Slf4j
 public class Prototype {
 
     public static void main(String[] args) {
@@ -67,7 +69,7 @@ public class Prototype {
 
         @Override
         public void draw() {
-            System.out.println("Drawing a " + getColor() + " Circle with radius: " + radius);
+            log.info("Drawing a {} Circle with radius: {}", getColor(), radius);
         }
     }
 
@@ -87,7 +89,7 @@ public class Prototype {
 
         @Override
         public void draw() {
-            System.out.println("Drawing a " + getColor() + " Rectangle with width: " + width + ", height: " + height);
+            log.info("Drawing a {} Rectangle with width: {}, height: {}", getColor(), width, height);
         }
     }
 
