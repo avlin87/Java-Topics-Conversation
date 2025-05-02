@@ -1,6 +1,7 @@
 package com.epam.patterns.creational.factorymethod;
 
 import com.epam.patterns.creational.factorymethod.enums.AnimalSpecie;
+import com.epam.patterns.creational.factorymethod.impl.BirdFactory;
 import com.epam.patterns.creational.factorymethod.impl.CatFactory;
 import com.epam.patterns.creational.factorymethod.impl.DogFactory;
 
@@ -22,7 +23,7 @@ public class FactoryMethod {
     }
 
     private void example() {
-        AnimalSpecie specie = AnimalSpecie.DOG; // Change to "Cat" to test CatFactory
+        AnimalSpecie specie = AnimalSpecie.BIRD; // Change to "Cat" to test CatFactory
         selectFactory(specie);
 
         // Create the animal using the factory
@@ -36,6 +37,7 @@ public class FactoryMethod {
         factory = switch (specie) {
             case CAT -> new CatFactory();
             case DOG -> new DogFactory();
+            case BIRD -> new BirdFactory();
         };
     }
 }

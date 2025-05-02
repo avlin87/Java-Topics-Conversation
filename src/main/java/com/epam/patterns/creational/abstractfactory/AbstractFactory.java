@@ -25,7 +25,7 @@ public class AbstractFactory {
     }
 
     private void example() {
-        VehicleType vehicleType = VehicleType.CAR;
+        VehicleType vehicleType = VehicleType.BIKE;
         selectFactory(vehicleType);
 
         // Use the factory to create the objects
