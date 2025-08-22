@@ -1,5 +1,6 @@
 package com.epam.annotations;
 
+import com.epam.annotations.context.CurrentUser;
 import com.epam.annotations.proxy.SecurityProxy;
 import com.epam.annotations.service.AccountService;
 import com.epam.annotations.service.impl.AccountServiceImpl;

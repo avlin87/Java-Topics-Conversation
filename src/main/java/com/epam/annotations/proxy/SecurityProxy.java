@@ -1,7 +1,7 @@
 package com.epam.annotations.proxy;
 
-import com.epam.annotations.CurrentUser;
 import com.epam.annotations.annotation.RequiresRole;
+import com.epam.annotations.context.CurrentUser;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.InvocationHandler;

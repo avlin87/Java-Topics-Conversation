@@ -1,4 +1,4 @@
-package com.epam.annotations;
+package com.epam.annotations.context;
 
 import com.epam.annotations.enums.Role;
 
@@ -15,7 +15,7 @@ public final class CurrentUser {
         ROLES.get().addAll(Arrays.asList(roles));
     }
 
-    public static boolean hasRole(Role  role) {
+    public static boolean hasRole(Role role) {
         return ROLES.get().contains(role);
     }
 
