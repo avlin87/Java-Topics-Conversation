@@ -11,6 +11,7 @@
     <properties>
         <java.version>22</java.version>
         <lombok.version>1.18.36</lombok.version>
+        <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
     </properties>
 
     <dependencies>
@@ -31,6 +32,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
                 <configuration>
                     <source>22</source>
                     <target>22</target>
